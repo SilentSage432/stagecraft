@@ -182,11 +182,13 @@
   </footer>
   <div id="sage-chat-portal"></div>
   <script>
-    fetch("/components/sage-chat.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("sage-chat-portal").innerHTML = html;
-      });
+    window.addEventListener('load', () => {
+      fetch("/components/sage-chat.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("sage-chat-portal").innerHTML = html;
+        });
+    });
   </script>
 </body>
 </html>
