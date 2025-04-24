@@ -1,6 +1,6 @@
 // sage-chat.js
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
     const sigilBtn = document.getElementById('sigil-btn');
     const chatContainer = document.getElementById('chat-container');
     const chatLog = document.getElementById('chat-log');
