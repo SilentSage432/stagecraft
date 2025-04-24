@@ -180,5 +180,13 @@
       <a href="contact.html">Contact</a>
     </nav>
   </footer>
+  <div id="sage-chat-portal"></div>
+  <script>
+    fetch("/components/sage-chat.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("sage-chat-portal").innerHTML = html;
+      });
+  </script>
 </body>
 </html>
