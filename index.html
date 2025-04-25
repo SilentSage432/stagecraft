@@ -206,13 +206,13 @@
                 const message = userInput.value.trim();
                 if (message === '') return;
 
-                appendMessage("You", message);
+                // Use global sendMessage function from sage-chat.js
+                if (typeof sendMessage === 'function') {
+                  sendMessage();
+                } else {
+                  console.warn("❌ sendMessage is not defined globally.");
+                }
                 userInput.value = '';
-
-                setTimeout(() => {
-                  const response = generateSageResponse(message);
-                  appendMessage("The Sage", response);
-                }, 600);
               });
 
               userInput.addEventListener('keydown', (e) => {
@@ -221,23 +221,6 @@
                 }
               });
 
-              function appendMessage(sender, message) {
-                const msgEl = document.createElement('div');
-                msgEl.innerHTML = `<strong>${sender}:</strong> ${message}`;
-                chatLog.appendChild(msgEl);
-                chatLog.scrollTop = chatLog.scrollHeight;
-              }
-
-              function generateSageResponse(input) {
-                const responses = [
-                  "The winds speak of hidden truths. Listen closely.",
-                  "A path veiled in shadow often holds the brightest flame.",
-                  "You seek an answer, but the question must first find you.",
-                  "What you desire may not be what you need, seeker.",
-                  "The veil stirs. A whisper forms. Do you hear it?"
-                ];
-                return responses[Math.floor(Math.random() * responses.length)];
-              }
             }
           }, 100);
         });
