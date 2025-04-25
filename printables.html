@@ -187,6 +187,21 @@
         .then(res => res.text())
         .then(html => {
           document.getElementById("sage-chat-portal").innerHTML = html;
+  
+          // Wait briefly for elements to render
+          setTimeout(() => {
+            const sigilBtn = document.getElementById('sigil-btn');
+            const chatContainer = document.getElementById('chat-container');
+  
+            if (sigilBtn && chatContainer) {
+              console.log("🌟 Binding sigil click from inline script.");
+              sigilBtn.addEventListener('click', () => {
+                console.log("💬 Sigil clicked (inline fix).");
+                chatContainer.style.display =
+                  chatContainer.style.display === 'flex' ? 'none' : 'flex';
+              });
+            }
+          }, 100); // Just a brief delay to ensure injection
         });
     });
   </script>
