@@ -184,6 +184,12 @@
         .then(res => res.text())
         .then(html => {
           document.getElementById("sage-chat-portal").innerHTML = html;
+
+          // Load chat JS after HTML is injected
+          const script = document.createElement("script");
+          script.src = "/scripts/sage-chat.js";
+          script.defer = true;
+          document.body.appendChild(script);
         });
     });
   </script>
