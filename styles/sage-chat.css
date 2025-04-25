@@ -56,6 +56,7 @@
   }
   
   #sigil-btn {
+    pointer-events: auto;
     position: fixed;
     bottom: 20px;
     right: 20px;
