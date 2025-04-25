@@ -23,8 +23,8 @@ window.addEventListener("load", () => {
         appendMessage('You', message);
         userInput.value = '';
 
-        setTimeout(() => {
-          const response = generateSageResponse(message);
+        setTimeout(async () => {
+          const response = await generateSageResponse(message);
           appendMessage('The Sage', response);
         }, 600);
       };
@@ -34,17 +34,37 @@ window.addEventListener("load", () => {
         msgEl.innerHTML = `<strong>${sender}:</strong> ${message}`;
         chatLog.appendChild(msgEl);
         chatLog.scrollTop = chatLog.scrollHeight;
+
+        // Bind suggestion buttons if they exist
+        msgEl.querySelectorAll('.suggestion').forEach(btn => {
+          btn.addEventListener('click', () => {
+            userInput.value = btn.textContent;
+            window.sendMessage();
+          });
+        });
       }
 
-      function generateSageResponse(input) {
-        const responses = [
-          "The winds speak of hidden truths. Listen closely.",
-          "A path veiled in shadow often holds the brightest flame.",
-          "You seek an answer, but the question must first find you.",
-          "What you desire may not be what you need, seeker.",
-          "The veil stirs. A whisper forms. Do you hear it?"
-        ];
-        return responses[Math.floor(Math.random() * responses.length)];
+      async function generateSageResponse(input) {
+        const res = await fetch('/assets/lore.json');
+        const lore = await res.json();
+        const suggestions = lore["__suggestions"] || {};
+
+        input = input.toLowerCase();
+        for (const key in lore) {
+          if (key === "__suggestions") continue;
+          if (input.includes(key)) {
+            let response = lore[key];
+            if (suggestions[key]) {
+              const links = suggestions[key]
+                .map(s => `<button class='suggestion'>${s}</button>`)
+                .join(" ");
+              response += `<div class='suggestions'>${links}</div>`;
+            }
+            return response;
+          }
+        }
+
+        return lore["default"] || "The stars are silent on that... for now.";
       }
     }
   }, 200); // Check every 200ms until elements exist

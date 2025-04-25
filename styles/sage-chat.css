@@ -69,3 +69,26 @@
     box-shadow: 0 0 15px rgba(160, 120, 255, 0.4);
     z-index: 1001;
   }
+
+.suggestions {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 5px 0;
+}
+
+.suggestions button.suggestion {
+  background: #3a2b61;
+  border: none;
+  color: #e6e1d6;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85em;
+  transition: background 0.2s ease;
+}
+
+.suggestions button.suggestion:hover {
+  background: #6953a3;
+}
