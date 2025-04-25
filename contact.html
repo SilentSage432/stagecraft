@@ -9,7 +9,7 @@
         body {
             margin: 0;
             font-family: 'EB Garamond', serif;
-            background: url('images/parchment-sigil.png') no-repeat center center fixed;
+            background: url('images/parchment_bg.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #4b2e83;
         }
@@ -195,16 +195,57 @@
               setTimeout(() => {
                 const sigilBtn = document.getElementById('sigil-btn');
                 const chatContainer = document.getElementById('chat-container');
-      
-                if (sigilBtn && chatContainer) {
-                  console.log("🌟 Binding sigil click from inline script.");
+                const chatLog = document.getElementById('chat-log');
+                const userInput = document.getElementById('user-input');
+                const sendBtn = document.querySelector('#chat-input button');
+
+                if (sigilBtn && chatContainer && chatLog && userInput && sendBtn) {
+                  console.log("🌟 Binding sigil and send button...");
+
                   sigilBtn.addEventListener('click', () => {
-                    console.log("💬 Sigil clicked (inline fix).");
+                    console.log("💬 Sigil clicked.");
                     chatContainer.style.display =
                       chatContainer.style.display === 'flex' ? 'none' : 'flex';
                   });
+
+                  sendBtn.addEventListener('click', () => {
+                    const message = userInput.value.trim();
+                    if (message === '') return;
+
+                    appendMessage("You", message);
+                    userInput.value = '';
+
+                    setTimeout(() => {
+                      const response = generateSageResponse(message);
+                      appendMessage("The Sage", response);
+                    }, 600);
+                  });
+
+                  userInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                      sendBtn.click();
+                    }
+                  });
+
+                  function appendMessage(sender, message) {
+                    const msgEl = document.createElement('div');
+                    msgEl.innerHTML = `<strong>${sender}:</strong> ${message}`;
+                    chatLog.appendChild(msgEl);
+                    chatLog.scrollTop = chatLog.scrollHeight;
+                  }
+
+                  function generateSageResponse(input) {
+                    const responses = [
+                      "The winds speak of hidden truths. Listen closely.",
+                      "A path veiled in shadow often holds the brightest flame.",
+                      "You seek an answer, but the question must first find you.",
+                      "What you desire may not be what you need, seeker.",
+                      "The veil stirs. A whisper forms. Do you hear it?"
+                    ];
+                    return responses[Math.floor(Math.random() * responses.length)];
+                  }
                 }
-              }, 100); // Just a brief delay to ensure injection
+              }, 100);
             });
         });
       </script>
