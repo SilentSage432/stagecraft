@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sage Craft Alchemy</title>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Crimson+Text&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage-purple: #4B0F54;
+      --sage-gold: #D4AF37;
+      --sage-parchment: #F9F4E8;
+      --sage-green: #6A8C65;
+      --font-header: 'IM Fell English SC', serif;
+      --font-body: 'Crimson Text', serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--sage-parchment);
+      color: #2e2e2e;
+    }
+
+    header {
+      background-color: var(--sage-purple);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    header img {
+      height: 80px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-family: var(--font-header);
+      text-transform: uppercase;
+    }
+
+    .hero {
+      background: url('images/hero-sage-mist.png') center top / cover no-repeat;
+      background-size: cover;
+      min-height: 70vh;
+      background-position: center 20%;
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+      background-blend-mode: overlay;
+      background-color: rgba(75, 15, 84, 0.7);
+    }
+
+    .hero h1 {
+      font-family: var(--font-header);
+      font-size: 3rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero button {
+      background: var(--sage-gold);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-family: var(--font-header);
+      cursor: pointer;
+    }
+    .hero-button {
+      background: var(--sage-gold);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      font-family: var(--font-header);
+      cursor: pointer;
+      color: #2e2e2e;
+      text-decoration: none;
+      margin: 0 0.5rem;
+      display: inline-block;
+    }
+    .hero-button:hover {
+      background: #b48d2c;
+    }
+
+    .collections, .featured, .lore, .newsletter {
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .collections h2, .featured h2, .lore h2, .newsletter h2 {
+      font-family: var(--font-header);
+      color: var(--sage-purple);
+    }
+
+    .footer {
+      background: var(--sage-purple);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .footer a {
+      color: var(--sage-gold);
+      margin: 0 0.5rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo_wand_feather_sigil.png" alt="Sage Craft Alchemy logo">
+    <nav>
+      <a href="shop.html">Shop</a>
+      <a href="printables.html">Grimoire</a>
+      <a href="about.html">About</a>
+      <a href="lore.html">Lore</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Sage Craft Alchemy</h1>
+    <p>Crafted with Arcane Intention</p>
+    <a href="shop.html" class="hero-button">Enter the Shop</a>
+    <a href="printables.html" class="hero-button">Browse the Grimoire</a>
+  </section>
+
+  <section class="coming-soon-banner" style="text-align: center; padding: 2rem; background-color: #efe7db; border-top: 3px dashed #b392ac; border-bottom: 3px dashed #b392ac;">
+    <h2 style="color: #4b2e83; font-size: 2rem; margin-bottom: 0.5rem;">🌟 What Awaits Beyond the Veil 🌟</h2>
+    <p style="color: #7f6b5a; font-size: 1.1rem;">
+      Grimoire printables, enchanted tea blends, potion-inspired décor, and handcrafted artifacts are being conjured. The Sage's Emporium opens soon — stay tuned and join the circle.
+    </p>
+  </section>
+
+  <section class="collections">
+    <h2>Featured Collections</h2>
+    <!-- Placeholder boxes here -->
+  </section>
+
+  <section class="featured">
+    <h2>New & Featured</h2>
+    <!-- Product highlights will go here -->
+  </section>
+
+  <section class="lore">
+    <h2>The Lore Scroll</h2>
+    <p>Sage Craft Alchemy is the storefront of the wandering sage — where spellbooks meet stardust, and everyday items carry enchanted purpose.</p>
+  </section>
+
+  <section class="newsletter">
+    <h2>Join the Circle</h2>
+    <p>Receive scrolls of insight, special enchantments, and early access to rare drops.</p>
+    <form action="https://formsubmit.co/SageCraftAlchemy@proton.me" method="POST">
+      <input type="hidden" name="_next" value="https://sagecraftalchemy.com/thank-you.html">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="email" name="email" placeholder="Your email here" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p style="margin-top: 1rem;">
+      Have questions? <a href="mailto:SageCraftAlchemy@proton.me" style="color: #4B0F54; text-decoration: underline;">Email the Sage</a>
+    </p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 Sage Craft Alchemy • Crafted by the Sage</p>
+    <div>
+      <a href="#">Instagram</a>
+      <a href="#">Pinterest</a>
+      <a href="#">TikTok</a>
+    </div>
+  </footer>
+
+  <div id="sage-chat-portal"></div>
+  <script>
+    window.addEventListener('load', () => {
+      fetch("/components/sage-chat.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("sage-chat-portal").innerHTML = html;
+
+          const script = document.createElement('script');
+          script.src = "/scripts/sage-chat.js";
+          script.onload = () => {
+            console.log("✨ Sage script loaded.");
+
+            const sigilBtn = document.getElementById('sigil-btn');
+            const chatContainer = document.getElementById('chat-container');
+            const chatLog = document.getElementById('chat-log');
+            const userInput = document.getElementById('user-input');
+            const sendBtn = document.querySelector('#chat-input button');
+
+            if (sigilBtn && chatContainer && chatLog && userInput && sendBtn) {
+              console.log("🌟 Binding sigil and send button...");
+
+              sigilBtn.addEventListener('click', () => {
+                console.log("💬 Sigil clicked.");
+                chatContainer.style.display =
+                  chatContainer.style.display === 'flex' ? 'none' : 'flex';
+              });
+
+              sendBtn.addEventListener('click', () => {
+                if (typeof sendMessage === 'function') {
+                  sendMessage();
+                } else {
+                  console.warn("❌ sendMessage is not defined globally.");
+                }
+              });
+
+              userInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  if (typeof sendMessage === 'function') {
+                    sendMessage();
+                  } else {
+                    console.warn("❌ sendMessage is not defined globally.");
+                  }
+                }
+              });
+            }
+
+            window.sendMessage = async function() {
+              const userInput = document.getElementById('user-input');
+              const chatLog = document.getElementById('chat-log');
+
+              const original = userInput.value.trim();
+              if (original === '') return;
+
+              appendMessage("You", original);
+              userInput.value = '';
+
+              const response = await generateSageResponse(original);
+              appendMessage("The Sage", response);
+            };
+
+            function appendMessage(sender, message) {
+              const chatLog = document.getElementById('chat-log');
+              const msgEl = document.createElement('div');
+              msgEl.innerHTML = `<strong>${sender}:</strong> ${message}`;
+              chatLog.appendChild(msgEl);
+              chatLog.scrollTop = chatLog.scrollHeight;
+            }
+          };
+          document.body.appendChild(script);
+        });
+    });
+  </script>
+</body>
+</html>

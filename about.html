@@ -269,32 +269,25 @@
                     chatContainer.style.display =
                       chatContainer.style.display === 'flex' ? 'none' : 'flex';
                   });
-
                   sendBtn.addEventListener('click', () => {
-                    const message = userInput.value.trim();
-                    if (message === '') return;
-
-                    appendMessage("You", message);
-                    userInput.value = '';
-
-                    setTimeout(() => {
-                      const response = generateSageResponse(message);
-                      appendMessage("The Sage", response);
-                    }, 600);
-                  });
+                    if (typeof sendMessage === 'function') {
+                        sendMessage();
+                    } else {
+                        console.warn("❌ sendMessage is not defined globally.");
+                    }
+                    });
 
                   userInput.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
-                      sendBtn.click();
+                      e.preventDefault();
+                      if (typeof sendMessage === 'function') {
+                        sendMessage();
+                      } else {
+                        console.warn("❌ sendMessage is not defined globally.");
+                      }
                     }
                   });
 
-                  function appendMessage(sender, message) {
-                    const msgEl = document.createElement('div');
-                    msgEl.innerHTML = `<strong>${sender}:</strong> ${message}`;
-                    chatLog.appendChild(msgEl);
-                    chatLog.scrollTop = chatLog.scrollHeight;
-                  }
 
                 }
               }, 100);

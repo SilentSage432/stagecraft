@@ -19,20 +19,6 @@ window.addEventListener("load", () => {
           chatContainer.style.display === 'flex' ? 'none' : 'flex';
       });
 
-      // Handle user message
-      window.sendMessage = function () {
-        const original = userInput.value;
-        const message = original.toLowerCase().replace(/[^\w\s]/gi, '').trim();
-        if (message === '') return;
-
-        appendMessage('You', original);
-        userInput.value = '';
-
-        setTimeout(async () => {
-          const response = await generateSageResponse(message, original);
-          appendMessage('The Sage', response);
-        }, 600);
-      };
 
       // Append message to chat log
       function appendMessage(sender, message) {

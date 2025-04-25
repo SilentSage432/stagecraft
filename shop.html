@@ -190,11 +190,10 @@
               setTimeout(() => {
                 const sigilBtn = document.getElementById('sigil-btn');
                 const chatContainer = document.getElementById('chat-container');
-                const chatLog = document.getElementById('chat-log');
                 const userInput = document.getElementById('user-input');
                 const sendBtn = document.querySelector('#chat-input button');
 
-                if (sigilBtn && chatContainer && chatLog && userInput && sendBtn) {
+                if (sigilBtn && chatContainer && userInput && sendBtn) {
                   console.log("🌟 Binding sigil and send button...");
 
                   sigilBtn.addEventListener('click', () => {
@@ -204,31 +203,23 @@
                   });
 
                   sendBtn.addEventListener('click', () => {
-                    const message = userInput.value.trim();
-                    if (message === '') return;
-
-                    appendMessage("You", message);
-                    userInput.value = '';
-
-                    setTimeout(() => {
-                      const response = generateSageResponse(message);
-                      appendMessage("The Sage", response);
-                    }, 600);
+                    if (typeof sendMessage === 'function') {
+                      sendMessage();
+                    } else {
+                      console.warn("❌ sendMessage is not defined globally.");
+                    }
                   });
 
                   userInput.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
-                      sendBtn.click();
+                      e.preventDefault();
+                      if (typeof sendMessage === 'function') {
+                        sendMessage();
+                      } else {
+                        console.warn("❌ sendMessage is not defined globally.");
+                      }
                     }
                   });
-
-                  function appendMessage(sender, message) {
-                    const msgEl = document.createElement('div');
-                    msgEl.innerHTML = `<strong>${sender}:</strong> ${message}`;
-                    chatLog.appendChild(msgEl);
-                    chatLog.scrollTop = chatLog.scrollHeight;
-                  }
-
                 }
               }, 100);
             });
