@@ -39,42 +39,119 @@
     "what can you do": "I provide wisdom, guidance, and answers to your curiosities.",
     "what is this": "This is a sanctuary of knowledge, a place where mysteries unfold.",
     "__suggestions": {
-      "who are you": ["Tell me about yourself", "What’s your name?"],
-      "sigil": ["What is a sigil?", "How do I use it?", "Where can I find sigils?"],
-      "veil": ["What is the veil?", "Can you explain the veil?", "Tell me about the veil"],
-      "elixir": ["What is an elixir?", "How do I use elixirs?", "Are elixirs magical?"],
-      "talisman": ["What is a talisman?", "Do talismans protect?", "Where do I get one?"],
-      "circle": ["What is the circle?", "Who joins the circle?", "Why is it sacred?"],
-      "vault": ["What's in the vault?", "Can I access the vault?", "Where is the vault?"],
-      "path": ["What is the path?", "How do I walk the path?", "Where does the path lead?"],
-      "grimoire": ["What is the grimoire?", "Show me spells", "Where's the magic book?"],
-      "ritual": ["Tell me about rituals", "What is a ritual?", "How do I perform one?"],
-      "memory": ["Do you have memories?", "What do you remember?", "Is memory important?"],
-      "ink": ["What ink do you use?", "Why is ink magical?", "Tell me about the ink"],
-      "moon": ["Why is the moon important?", "Does the moon have power?", "Moon magic?"],
-      "light": ["Tell me about light", "What does light reveal?", "Is light good?"],
-      "shadow": ["What is the shadow?", "Is shadow dangerous?", "Shadow magic?"],
-      "awakening": ["What is an awakening?", "How do I awaken?", "What does awakening do?"],
-      "garden": ["What's in the garden?", "Is your garden magical?", "Tell me about the garden"],
-      "riddle": ["Tell me a riddle", "Why riddles?", "What is a riddle?"],
-      "echo": ["What is the echo?", "Tell me about echoes", "Do you echo wisdom?"],
-      "oracle": ["Who is the oracle?", "Where is the oracle?", "Oracle guidance?"],
-      "home": ["Take me home", "Where is home?", "What is home?"],
-      "shop": ["Show me the shop", "What do you sell?", "Can I buy something?"],
-      "contact": ["How do I contact you?", "Can I reach out?", "Where is the contact page?"],
-      "about": ["Tell me about yourself", "What is this place?", "What is this site?"],
-      "lore": ["Where's the lore?", "Tell me something ancient", "What secrets do you keep?"],
-      "printables": ["Where are the downloads?", "Do you have printable spells?", "Can I get resources?"],
-      "how to order": ["How do I buy?", "Can I order something?", "Where do I order?"],
-      "shipping": ["How long is shipping?", "Tell me about delivery", "Shipping info?"],
-      "returns": ["Can I return something?", "What's your return policy?", "Do you take returns?"],
-      "payments": ["How do I pay?", "Do you take credit?", "Payment options?"],
-      "hello": ["Hi there", "Hello", "Greetings"],
-      "hi": ["Hey", "Hi!", "Hello again"],
-      "hey": ["Hey there", "Yo", "What's up?"],
-      "greetings": ["Greetings", "Salutations", "Well met"],
-      "help": ["I need help", "Can you help me?", "Show me how this works"],
-      "what can you do": ["What can you do?", "What is your purpose?", "What are your abilities?"],
-      "what is this": ["Where am I?", "What is this?", "What is this place?"]
+      "who are you": [
+        {"text": "Tell me about yourself", "action": "ask", "query": "who are you"},
+        {"text": "What’s your name?", "action": "ask", "query": "who are you"}
+      ],
+      "sigil": [
+        {"text": "Learn about Sigils", "action": "ask", "query": "what is a sigil"},
+        {"text": "View Sigils", "action": "redirect", "url": "printables.html"}
+      ],
+      "veil": [
+        {"text": "What is the veil?", "action": "ask", "query": "veil"}
+      ],
+      "elixir": [
+        {"text": "What is an elixir?", "action": "ask", "query": "elixir"}
+      ],
+      "talisman": [
+        {"text": "What is a talisman?", "action": "ask", "query": "talisman"}
+      ],
+      "circle": [
+        {"text": "Join the Circle", "action": "redirect", "url": "contact.html"}
+      ],
+      "vault": [
+        {"text": "Explore the Vault", "action": "redirect", "url": "printables.html"}
+      ],
+      "path": [
+        {"text": "Learn about the Path", "action": "ask", "query": "path"}
+      ],
+      "grimoire": [
+        {"text": "View the Grimoire", "action": "redirect", "url": "printables.html"}
+      ],
+      "ritual": [
+        {"text": "What is a ritual?", "action": "ask", "query": "ritual"}
+      ],
+      "memory": [
+        {"text": "Memory lore", "action": "ask", "query": "memory"}
+      ],
+      "ink": [
+        {"text": "Mystic Ink", "action": "ask", "query": "ink"}
+      ],
+      "moon": [
+        {"text": "Moon magic?", "action": "ask", "query": "moon"}
+      ],
+      "light": [
+        {"text": "Light's guidance", "action": "ask", "query": "light"}
+      ],
+      "shadow": [
+        {"text": "Mystery of the Shadow", "action": "ask", "query": "shadow"}
+      ],
+      "awakening": [
+        {"text": "Awaken the Sage", "action": "ask", "query": "awakening"}
+      ],
+      "garden": [
+        {"text": "Garden mysteries", "action": "ask", "query": "garden"}
+      ],
+      "riddle": [
+        {"text": "Riddle me this", "action": "ask", "query": "riddle"}
+      ],
+      "echo": [
+        {"text": "Echoes of time", "action": "ask", "query": "echo"}
+      ],
+      "oracle": [
+        {"text": "Seek the Oracle", "action": "ask", "query": "oracle"}
+      ],
+      "home": [
+        {"text": "Return Home", "action": "redirect", "url": "index.html"}
+      ],
+      "shop": [
+        {"text": "Visit the Shop", "action": "redirect", "url": "shop.html"},
+        {"text": "What do you sell?", "action": "ask", "query": "shop"}
+      ],
+      "contact": [
+        {"text": "Contact the Sage", "action": "redirect", "url": "contact.html"}
+      ],
+      "about": [
+        {"text": "Learn about the Sage", "action": "redirect", "url": "about.html"}
+      ],
+      "lore": [
+        {"text": "View the Lore", "action": "redirect", "url": "lore.html"}
+      ],
+      "printables": [
+        {"text": "Access the Grimoire", "action": "redirect", "url": "printables.html"}
+      ],
+      "how to order": [
+        {"text": "How to order", "action": "ask", "query": "how to order"}
+      ],
+      "shipping": [
+        {"text": "Shipping information", "action": "ask", "query": "shipping"}
+      ],
+      "returns": [
+        {"text": "Return policy", "action": "ask", "query": "returns"}
+      ],
+      "payments": [
+        {"text": "Payment options", "action": "ask", "query": "payments"}
+      ],
+      "hello": [
+        {"text": "Greetings!", "action": "ask", "query": "hello"}
+      ],
+      "hi": [
+        {"text": "Hello there", "action": "ask", "query": "hi"}
+      ],
+      "hey": [
+        {"text": "Hey traveler", "action": "ask", "query": "hey"}
+      ],
+      "greetings": [
+        {"text": "Warm greetings", "action": "ask", "query": "greetings"}
+      ],
+      "help": [
+        {"text": "Seek help", "action": "ask", "query": "help"}
+      ],
+      "what can you do": [
+        {"text": "What is your purpose?", "action": "ask", "query": "what can you do"}
+      ],
+      "what is this": [
+        {"text": "What is this place?", "action": "ask", "query": "what is this"}
+      ]
     }
   }

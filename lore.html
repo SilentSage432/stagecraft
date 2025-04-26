@@ -146,29 +146,49 @@
             .then(res => res.text())
             .then(html => {
               document.getElementById("sage-chat-portal").innerHTML = html;
-      
-              // Wait briefly for elements to render
-              setTimeout(() => {
+
+              const script = document.createElement('script');
+              script.src = "/scripts/sage-chat.js";
+              script.onload = () => {
+                console.log("✨ Sage script loaded.");
+
+                window.sendMessage = async function() {
+                  const userInput = document.getElementById('user-input');
+                  const chatLog = document.getElementById('chat-log');
+
+                  const original = userInput.value.trim();
+                  if (original === '') return;
+
+                  appendMessage("You", original);
+                  userInput.value = '';
+
+                  const response = await generateSageResponse(original);
+                  appendMessage("The Sage", response);
+                };
+
+                function appendMessage(sender, message) {
+                  const chatLog = document.getElementById('chat-log');
+                  const msgEl = document.createElement('div');
+                  msgEl.innerHTML = `<strong>${sender}:</strong> ${message}`;
+                  chatLog.appendChild(msgEl);
+                  chatLog.scrollTop = chatLog.scrollHeight;
+                }
+
                 const sigilBtn = document.getElementById('sigil-btn');
                 const chatContainer = document.getElementById('chat-container');
-                const chatLog = document.getElementById('chat-log');
                 const userInput = document.getElementById('user-input');
                 const sendBtn = document.querySelector('#chat-input button');
 
-                if (sigilBtn && chatContainer && chatLog && userInput && sendBtn) {
+                if (sigilBtn && chatContainer && userInput && sendBtn) {
                   console.log("🌟 Binding sigil and send button...");
 
                   sigilBtn.addEventListener('click', () => {
-                    console.log("💬 Sigil clicked.");
-                    chatContainer.style.display =
-                      chatContainer.style.display === 'flex' ? 'none' : 'flex';
+                    chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex';
                   });
 
                   sendBtn.addEventListener('click', () => {
                     if (typeof sendMessage === 'function') {
                       sendMessage();
-                    } else {
-                      console.warn("❌ sendMessage is not defined globally.");
                     }
                   });
 
@@ -177,13 +197,32 @@
                       e.preventDefault();
                       if (typeof sendMessage === 'function') {
                         sendMessage();
-                      } else {
-                        console.warn("❌ sendMessage is not defined globally.");
                       }
                     }
                   });
                 }
-              }, 100);
+                document.addEventListener('click', function(e) {
+                  if (e.target.classList.contains('suggestion')) {
+                    const action = e.target.dataset.action;
+                    if (action === 'ask') {
+                      const query = e.target.dataset.query;
+                      if (query) {
+                        const userInput = document.getElementById('user-input');
+                        userInput.value = query;
+                        if (typeof sendMessage === 'function') {
+                          sendMessage();
+                        }
+                      }
+                    } else if (action === 'redirect') {
+                      const url = e.target.dataset.url;
+                      if (url) {
+                        window.location.href = url;
+                      }
+                    }
+                  }
+                });
+              };
+              document.body.appendChild(script);
             });
         });
       </script>
