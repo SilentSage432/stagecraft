@@ -87,9 +87,45 @@ async function generateSageResponse(input, original) {
     console.log("No match found, using default");
     return `<em>${
       lore["default"] || "The stars are silent on that... for now."
-    }</em>`;
+    }</em>
+<div class="suggestions">
+  <button class="suggestion" data-action="redirect" data-url="contact.html">Contact the Sage</button>
+</div>`;
   } catch (error) {
     console.error("Error in generateSageResponse:", error);
     return `<em>Sorry, I'm unable to access my knowledge right now.</em>`;
   }
 }
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const sigilBtn = document.getElementById('sigil-btn');
+    const chatContainer = document.getElementById('chat-container');
+    const chatLog = document.getElementById('chat-log');
+
+    if (sigilBtn && chatContainer && chatLog) {
+      // Open chat if not already open
+      if (chatContainer.style.display !== 'flex') {
+        sigilBtn.click();
+      }
+
+      // Add welcome message
+      const welcome = document.createElement('div');
+      welcome.className = "sage-message";
+      welcome.innerHTML = `<strong>The Sage:</strong> Welcome, Seeker. How may I guide you?`;
+      chatLog.appendChild(welcome);
+
+      // Add starter suggestions
+      const suggestionsHTML = `
+        <div class="suggestions">
+          <button class="suggestion" data-action="redirect" data-url="shop.html">Visit the Shop</button>
+          <button class="suggestion" data-action="redirect" data-url="printables.html">View the Grimoire</button>
+          <button class="suggestion" data-action="redirect" data-url="about.html">Learn about the Sage</button>
+          <button class="suggestion" data-action="redirect" data-url="contact.html">Contact the Sage</button>
+        </div>
+      `;
+      chatLog.insertAdjacentHTML('beforeend', suggestionsHTML);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+  }, 4000); // 4 seconds after page load
+});

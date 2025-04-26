@@ -266,6 +266,35 @@
                     }
                   }
                 });
+
+                // Auto-open the Sage chat and display welcome after load
+                setTimeout(() => {
+                  const chatLog = document.getElementById('chat-log');
+                  const chatContainer = document.getElementById('chat-container');
+                  const sigilBtn = document.getElementById('sigil-btn');
+
+                  if (sigilBtn && chatContainer && chatLog) {
+                    if (chatContainer.style.display !== 'flex') {
+                      sigilBtn.click();
+                    }
+
+                    const welcome = document.createElement('div');
+                    welcome.className = "sage-message";
+                    welcome.innerHTML = `<strong>The Sage:</strong> If you wish to speak beyond the veil, I shall carry your words to their destined mark.`;
+                    chatLog.appendChild(welcome);
+
+                    const suggestionsHTML = `
+                      <div class="suggestions">
+                        <button class="suggestion" data-action="redirect" data-url="shop.html">Visit the Shop</button>
+                        <button class="suggestion" data-action="redirect" data-url="printables.html">View the Grimoire</button>
+                        <button class="suggestion" data-action="redirect" data-url="about.html">Learn about the Sage</button>
+                        <button class="suggestion" data-action="redirect" data-url="contact.html">Contact the Sage</button>
+                      </div>
+                    `;
+                    chatLog.insertAdjacentHTML('beforeend', suggestionsHTML);
+                    chatLog.scrollTop = chatLog.scrollHeight;
+                  }
+                }, 4000);
               };
               document.body.appendChild(script);
             });
